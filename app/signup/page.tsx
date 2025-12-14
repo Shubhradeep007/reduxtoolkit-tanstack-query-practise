@@ -23,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { RegisterUser } from "@/hooks/redux-toolkit/slice/auth.slice";
 import { toast } from "sonner";
-import  Cookies  from "js-cookie";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
 
@@ -76,31 +76,31 @@ export default function Signup() {
     }
 
     dispatch(RegisterUser(formData))
-      .unwrap() 
+      .unwrap()
       .then((res) => {
         console.log("user register success", res);
         toast.success("User registered successfully!");
         router.push("/dashboard");
 
-        const token = res.token; 
+        const token = res.token;
         if (token) {
-          Cookies.set("x-access-token", token, { expires: 7 }); 
+          Cookies.set("x-access-token", token, { expires: 7 });
         }
 
-        form.reset();    
+        form.reset();
       })
       .catch((err) => {
         console.log("user register failed", err);
         toast.error("User registration failed: " + err);
       });
 
-    
+
 
   }
 
   return (
     <>
-      <div className="flex items-center justify-center mt-10">
+      <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] py-10">
         <Card className="w-full sm:max-w-md">
           <CardHeader>
             <CardTitle>Create your account</CardTitle>
@@ -234,9 +234,9 @@ export default function Signup() {
                         Upload Profile Image
                       </FieldLabel>
 
-                 
+
                       <Input
-                        {...fieldProps} 
+                        {...fieldProps}
                         id="profile-image-upload"
                         type="file"
                         accept="image/*"
@@ -273,14 +273,14 @@ export default function Signup() {
               </Button>
             </Field>
 
-           
+
           </CardFooter>
           <div className="p-4">
-           Already have an account? &nbsp;
+            Already have an account? &nbsp;
             <Button variant="link" onClick={() => router.push("/login")}>
               Login here
             </Button>
-            </div>
+          </div>
         </Card>
       </div>
     </>

@@ -47,7 +47,7 @@ export default function Login() {
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
-    
+
 
     dispatch(LoginUser(data))
       .unwrap()
@@ -71,7 +71,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="flex items-center justify-center mt-40">
+      <div className="flex items-center justify-center min-h-[calc(100vh-8rem)]">
         <Card className="w-full sm:max-w-md">
           <CardHeader>
             <CardTitle>Login to your account</CardTitle>
